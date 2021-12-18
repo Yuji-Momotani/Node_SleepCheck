@@ -1,0 +1,19 @@
+{
+  "name": "node_sleepcheck",
+  "version": "1.0.0",
+  "description": "睡眠チェックアプリ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuji1016-momo/Node_SleepCheck.git"
+  },
+  "author": "Yuji Momotani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yuji1016-momo/Node_SleepCheck/issues"
+  },
+  "homepage": "https://github.com/yuji1016-momo/Node_SleepCheck#readme"
+}
