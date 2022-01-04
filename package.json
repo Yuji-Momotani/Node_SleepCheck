@@ -18,6 +18,7 @@
   "homepage": "https://github.com/yuji1016-momo/Node_SleepCheck#readme",
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "log4js": "^6.3.0"
   }
 }

@@ -1,15 +1,29 @@
 const PORT = process.env.PORT;
+const path = require("path");
+const logger = require("./lib/log/logger.js");
+const accesslogger = require("./lib/log/accesslogger.js");
+const applicationlogger = require("./lib/log/applicationlogger.js");
 const express = require("express");
 const app = express();
 
-// 今回追加（ここから）
 
-app.set('view engine','ejs'); // ejsを使うための決まり文句
-app.use('/',require("./routes/index.js")); // ルーティング処理をroutes以下のフォルダで行うように設定
+app.set('view engine','ejs');
+app.disable("x-powered-by");
 
-// 今回追加（ここまで）
+
+// 静的コンテンツの配信
+app.use("/public",express.static(path.join(__dirname,"public")));
+
+// アクセスログ
+app.use(accesslogger());
+
+// 動的コンテンツの配信
+app.use('/',require("./routes/index.js"));
+
+// アプリケーションログ
+app.use(applicationlogger());
 
 // サーバー起動
 app.listen(PORT,()=>{
-    console.log(`Application listening at ${PORT}`);
+    logger.application.info(`Application listening at ${PORT}`);
 });
