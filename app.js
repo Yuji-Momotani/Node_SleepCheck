@@ -19,6 +19,19 @@ app.use(accesslogger());
 
 // 動的コンテンツの配信
 app.use('/',require("./routes/index.js"));
+app.use("/test",async(req,res,next)=>{
+    const sqlQuery = require("./lib/database/sql/TEST_SELECT.js").sqlQuery;
+    const MySQLClient = require("./lib/database/client.js").MySQLClient;
+    var data;
+    try{
+        data = await MySQLClient.executeQuery(sqlQuery,[1]);
+        console.log(data);
+    }catch(err){
+        next(err);
+    }
+    
+    res.end("OK");
+});
 
 // アプリケーションログ
 app.use(applicationlogger());
